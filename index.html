@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Люкс — Салон красоты, Бишкек</title>
+<meta name="description" content="Салон красоты «Люкс» в Бишкеке: парикмахерские услуги, маникюр, педикюр, ресницы, брови, косметология. Ежедневно 09:00–21:00.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --bg2:#121212; --card:#171717; --line:rgba(212,175,55,.22);
+  --gold:#d4af37; --gold2:#f1d572; --gold3:#a8841c; --text:#f2ede2; --muted:#a49d8c;
+  --grad:linear-gradient(135deg,#a8841c 0%,#f1d572 50%,#d4af37 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:300;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.container{width:min(1180px,100% - 32px);margin-inline:auto}
+section{padding:90px 0}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15}
+.gold-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{color:var(--gold);letter-spacing:.35em;text-transform:uppercase;font-size:.72rem;font-weight:500;display:block;margin-bottom:14px}
+.section-head{text-align:center;margin-bottom:52px}
+.section-head h2{font-size:clamp(2rem,5vw,3.2rem)}
+.section-head .sep{width:90px;height:1px;background:var(--grad);margin:18px auto 0;position:relative}
+.section-head .sep::after{content:"";position:absolute;left:50%;top:-3px;width:7px;height:7px;background:var(--gold);transform:translateX(-50%) rotate(45deg)}
+.section-head p{color:var(--muted);margin-top:18px;max-width:560px;margin-inline:auto}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:2px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;border:1px solid var(--gold);cursor:pointer;transition:.3s;font-family:inherit}
+.btn svg{font-size:1.2em}
+.btn-gold{background:var(--grad);color:#111;border-color:transparent;box-shadow:0 8px 30px rgba(212,175,55,.2)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(212,175,55,.38)}
+.btn-line{background:transparent;color:var(--gold2)}
+.btn-line:hover{background:var(--gold);color:#111}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:.35s;padding:18px 0}
+header.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(12px);padding:10px 0;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:42px;height:42px;border:1px solid var(--gold);display:grid;place-items:center;transform:rotate(45deg)}
+.logo-mark span{transform:rotate(-45deg);font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold2)}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:.25em;font-weight:700}
+.logo-text small{display:block;font-family:'Montserrat';font-size:.55rem;letter-spacing:.4em;color:var(--gold);font-weight:400;margin-top:-4px}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text);position:relative;padding:6px 0;transition:.3s}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:.3s}
+nav a:hover{color:var(--gold2)}nav a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--muted);font:500 .7rem 'Montserrat';padding:8px 10px;cursor:pointer;letter-spacing:.1em;transition:.2s}
+.lang button.active{background:var(--gold);color:#111}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--gold);width:42px;height:42px;font-size:1.3rem;cursor:pointer;border-radius:2px;place-items:center}
+
+/* Hero */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;position:relative;padding-top:110px;
+  background:radial-gradient(ellipse at 75% 30%,rgba(212,175,55,.14),transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(212,175,55,.08),transparent 50%),var(--bg)}
+.hero::before{content:"";position:absolute;inset:0;background-image:url('photos/hero.jpg');background-size:cover;background-position:center;opacity:.28}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 8%,rgba(10,10,10,.55) 60%,rgba(10,10,10,.85))}
+.hero .container{position:relative;z-index:2}
+.hero-inner{max-width:720px}
+.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);margin-bottom:22px}
+.hero p.lead{font-size:clamp(1rem,2vw,1.15rem);color:var(--muted);max-width:540px;margin-bottom:36px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:46px}
+.hero-info{display:flex;flex-wrap:wrap;gap:12px 32px;padding-top:26px;border-top:1px solid var(--line)}
+.hero-info div{display:flex;align-items:center;gap:10px;font-size:.88rem}
+.hero-info svg{color:var(--gold);font-size:1.3rem}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--line);border-radius:30px;margin-bottom:26px;color:var(--muted)}
+.status i{width:8px;height:8px;border-radius:50%;background:#777}
+.status.open i{background:#3ecf6e;box-shadow:0 0 10px #3ecf6e}.status.open{color:#bfe8cd}
+.status.closed i{background:#d95b5b}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat{background:var(--card);border:1px solid var(--line);padding:34px 24px;text-align:center;transition:.35s;position:relative}
+.feat:hover{transform:translateY(-6px);border-color:var(--gold)}
+.feat .ico{width:62px;height:62px;margin:0 auto 18px;border:1px solid var(--gold);display:grid;place-items:center;font-size:1.7rem;color:var(--gold2);transform:rotate(45deg)}
+.feat .ico svg{transform:rotate(-45deg)}
+.feat h3{font-size:1.4rem;margin-bottom:8px}
+.feat p{color:var(--muted);font-size:.88rem}
+
+/* Services */
+.services{background:var(--bg2)}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--line);padding:34px 30px;transition:.3s}
+.svc-card:hover{border-color:var(--gold)}
+.svc-card h3{display:flex;align-items:center;gap:14px;font-size:1.7rem;margin-bottom:20px;color:var(--gold2)}
+.svc-card h3 svg{font-size:1.5rem;color:var(--gold)}
+.svc-list{list-style:none}
+.svc-list li{display:flex;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1px dashed rgba(212,175,55,.15);font-size:.93rem}
+.svc-list li:last-child{border:0}
+.svc-list .dots{flex:1;border-bottom:1px dotted rgba(212,175,55,.3);transform:translateY(-3px)}
+.svc-list .price{color:var(--gold2);font-weight:500;white-space:nowrap}
+.svc-list .price.ask{color:var(--muted);font-weight:300;font-size:.8rem}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+.extra{background:var(--card);border:1px solid var(--line);padding:26px;display:flex;gap:16px;align-items:flex-start}
+.extra svg{font-size:1.8rem;color:var(--gold);margin-top:3px}
+.extra h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold2);margin-bottom:4px;font-weight:600}
+.extra p{color:var(--muted);font-size:.88rem}
+
+/* Booking */
+.booking-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:start}
+.how{background:var(--card);border:1px solid var(--line);padding:36px 32px}
+.how h3{font-size:2rem;margin-bottom:22px}
+.how .step{display:flex;gap:16px;margin-bottom:22px}
+.how .step .n{width:42px;height:42px;flex:none;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold2);font-family:'Cormorant Garamond',serif;font-size:1.3rem}
+.how .step h4{font-size:1rem;font-weight:500;margin-bottom:2px}
+.how .step p{color:var(--muted);font-size:.87rem}
+.how .calls{display:flex;flex-direction:column;gap:10px;margin-top:8px;padding-top:22px;border-top:1px solid var(--line)}
+.how .calls a{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--line);transition:.3s;font-size:.95rem}
+.how .calls a:hover{border-color:var(--gold);color:var(--gold2)}
+.how .calls svg{color:var(--gold);font-size:1.2rem}
+form{background:var(--card);border:1px solid var(--gold3);padding:36px 32px;box-shadow:0 0 60px rgba(212,175,55,.07)}
+form h3{font-size:2rem;margin-bottom:6px}
+form>p.sub{color:var(--muted);font-size:.88rem;margin-bottom:24px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 14px;font:400 .78rem 'Montserrat';cursor:pointer;transition:.25s;letter-spacing:.04em}
+.tab.active{border-color:var(--gold);color:var(--gold2);background:rgba(212,175,55,.08)}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-height:290px;overflow:auto;padding-right:4px;margin-bottom:12px}
+.chip{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);cursor:pointer;font-size:.84rem;transition:.2s;user-select:none;background:#101010}
+.chip:hover{border-color:var(--gold3)}
+.chip .box{width:18px;height:18px;border:1px solid var(--gold3);flex:none;display:grid;place-items:center;color:transparent;font-size:.8rem}
+.chip.sel{border-color:var(--gold);background:rgba(212,175,55,.1)}
+.chip.sel .box{background:var(--gold);color:#111}
+.selected{min-height:26px;margin-bottom:20px;font-size:.82rem;color:var(--gold2)}
+.selected b{font-weight:500;color:var(--muted)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.field label{display:block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;background:#0d0d0d;border:1px solid var(--line);color:var(--text);padding:13px 14px;font:300 .95rem 'Montserrat';border-radius:2px;outline:none;transition:.25s;color-scheme:dark}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.field textarea{resize:vertical;min-height:70px}
+.field.full{margin-bottom:14px}
+.err{color:#ff8a8a;font-size:.82rem;min-height:20px;margin:4px 0 8px}
+form .btn{width:100%;padding:17px}
+.wa-note{text-align:center;color:var(--muted);font-size:.75rem;margin-top:12px}
+
+/* Gallery */
+.services+.gallery,.gallery{background:var(--bg)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:12px}
+.gal-item{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#161616,#0e0e0e)}
+.gal-item:nth-child(1),.gal-item:nth-child(6){grid-row:span 2}
+.gal-item:nth-child(4){grid-column:span 2}
+.gal-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s}
+.gal-item:hover img{transform:scale(1.07)}
+.gal-item .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--gold3);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+.gal-item .ph svg{font-size:2rem;display:block;margin:0 auto 8px}
+
+/* Contacts */
+.contacts{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:36px}
+.c-list{display:flex;flex-direction:column;gap:16px}
+.c-item{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);padding:22px 24px;align-items:flex-start}
+.c-item>svg{font-size:1.6rem;color:var(--gold);margin-top:2px}
+.c-item h4{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:4px}
+.c-item p,.c-item a{font-size:.98rem;display:block}
+.c-item a:hover{color:var(--gold2)}
+.map{border:1px solid var(--line);min-height:380px;background:var(--card);position:relative}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(1) invert(.92) contrast(.9) sepia(.3)}
+
+.map-hit{position:absolute;inset:0;width:100%;height:100%;background:transparent;border:0;cursor:pointer;z-index:2}
+.map-badge{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:8px;background:var(--grad);color:#111;padding:11px 20px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.5);white-space:nowrap}
+.map:hover .map-badge{filter:brightness(1.1)}
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.78);backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px}
+.modal[hidden]{display:none}
+.modal-box{position:relative;width:min(380px,100%);background:var(--card);border:1px solid var(--gold);padding:34px 24px 24px;text-align:center}
+.modal-box h3{font-size:1.9rem;margin-bottom:4px;color:var(--gold2)}
+.modal-box p{color:var(--muted);font-size:.85rem;margin-bottom:20px}
+.modal-x{position:absolute;top:10px;right:10px;width:36px;height:36px;background:none;border:1px solid var(--line);color:var(--gold);display:grid;place-items:center;cursor:pointer;font-size:1.1rem}
+.map-opt{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--line);margin-top:10px;transition:.25s;font-size:.95rem;text-align:left}
+.map-opt svg{color:var(--gold);font-size:1.3rem}
+.map-opt:hover{border-color:var(--gold);color:var(--gold2);background:rgba(212,175,55,.07)}
+
+/* Footer */
+footer{padding:60px 0 30px;border-top:1px solid var(--line);background:#070707;text-align:center}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:2.4rem;letter-spacing:.3em;font-weight:700;margin-bottom:6px}
+.f-hours{color:var(--muted);font-size:.9rem;margin-bottom:26px}
+.f-hours b{color:var(--gold2);font-weight:500}
+.socials{display:flex;justify-content:center;gap:16px;margin-bottom:30px}
+.socials a{width:54px;height:54px;border:1px solid var(--gold);display:grid;place-items:center;font-size:1.5rem;color:var(--gold2);transition:.3s;border-radius:50%}
+.socials a:hover{background:var(--gold);color:#111;transform:translateY(-4px)}
+.copy{color:#6f695b;font-size:.75rem;letter-spacing:.08em}
+
+/* Floating WA */
+.fab{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:1.8rem;z-index:40;box-shadow:0 8px 24px rgba(37,211,102,.4);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media(max-width:1024px){
+  .about-grid{grid-template-columns:repeat(2,1fr)}
+  .booking-wrap,.contact-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:repeat(3,1fr)}
+  .gal-item:nth-child(4){grid-column:span 1}
+}
+@media(max-width:900px){
+  .burger{display:grid}
+  nav{position:fixed;inset:0 0 0 auto;width:min(310px,82vw);background:#0b0b0b;border-left:1px solid var(--line);padding:90px 28px 28px;transform:translateX(100%);transition:.4s;z-index:60}
+  nav.open{transform:none;box-shadow:-20px 0 60px rgba(0,0,0,.7)}
+  nav ul{flex-direction:column;gap:6px}
+  nav a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav-close{display:grid!important}
+  .svc-grid,.extras{grid-template-columns:1fr}
+}
+.nav-close{display:none;position:absolute;top:22px;right:22px;background:none;border:1px solid var(--line);color:var(--gold);width:40px;height:40px;place-items:center;font-size:1.2rem;cursor:pointer}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .logo-text{font-size:1.2rem;letter-spacing:.18em}
+  .logo-mark{width:34px;height:34px}
+  .about-grid{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .chips{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  .gal-item:nth-child(1),.gal-item:nth-child(6){grid-row:span 1}
+  .hero-actions .btn{width:100%}
+  form,.how{padding:26px 18px}
+  .lang button{padding:7px 8px}
+}
+@media(max-width:380px){.logo-text small{display:none}.nav-right{gap:8px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol>
+    <symbol id="i-nail" viewBox="0 0 24 24"><path d="M12 3c-2 3-3 5-3 8v10h6V11c0-3-1-5-3-8z"/><path d="M9 13h6"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path d="M19 3v4M17 5h4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 11.2 19a19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h3M20 17v4"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 7l4 4 5-7 5 7 4-4-2 12H5z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 22l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.7-5A9 9 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.3-1.5-2.3-1.2-1 .8c-1-.5-2-1.500-2.500-2.500l.8-1-1.200-2.300z"/></symbol>
+  </defs>
+</svg>
+
+<header id="header">
+  <div class="container nav">
+    <a href="#home" class="logo" aria-label="Люкс">
+      <div class="logo-mark"><span>L</span></div>
+      <div class="logo-text">ЛЮКС<small data-i18n="logoSub">САЛОН КРАСОТЫ</small></div>
+    </a>
+    <nav id="nav">
+      <button class="nav-close" id="navClose" aria-label="Close"><svg><use href="#i-x"/></svg></button>
+      <ul>
+        <li><a href="#about" data-i18n="nav_about">О салоне</a></li>
+        <li><a href="#services" data-i18n="nav_services">Услуги</a></li>
+        <li><a href="#booking" data-i18n="nav_booking">Запись</a></li>
+        <li><a href="#gallery" data-i18n="nav_gallery">Галерея</a></li>
+        <li><a href="#contacts" data-i18n="nav_contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" id="lang">
+        <button data-lang="ru">RU</button>
+        <button data-lang="ky">KG</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="status" id="status"><i></i><span id="statusText"></span></div>
+      <span class="eyebrow" data-i18n="hero_eyebrow">Салон красоты · Бишкек</span>
+      <h1><span class="gold-text">Люкс</span><br><span data-i18n="hero_title">Красота без компромиссов</span></h1>
+      <p class="lead" data-i18n="hero_lead">Парикмахерские услуги, маникюр и педикюр, ресницы и брови, косметология — всё для вашего безупречного образа в одном месте.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-gold"><svg><use href="#i-star"/></svg><span data-i18n="hero_cta">Записаться</span></a>
+        <a href="tel:+996312364968" class="btn btn-line"><svg><use href="#i-phone"/></svg><span data-i18n="hero_call">Позвонить</span></a>
+      </div>
+      <div class="hero-info">
+        <div><svg><use href="#i-clock"/></svg><span data-i18n="hours_short">Пн — Вс · 09:00–21:00</span></div>
+        <div><svg><use href="#i-pin"/></svg><span data-i18n="addr_short">пр. Чуй, 113</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="about_eyebrow">Почему мы</span>
+      <h2 data-i18n="about_title">Роскошь в каждой детали</h2>
+      <div class="sep"></div>
+      <p data-i18n="about_text">В салоне «Люкс» мы заботимся о каждом госте: опытные мастера, современные техники и приятная атмосфера.</p>
+    </div>
+    <div class="about-grid">
+      <div class="feat reveal"><div class="ico"><svg><use href="#i-crown"/></svg></div><h3 data-i18n="f1_t">Опытные мастера</h3><p data-i18n="f1_p">Профессионалы с многолетним опытом и безупречным вкусом.</p></div>
+      <div class="feat reveal"><div class="ico"><svg><use href="#i-sparkle"/></svg></div><h3 data-i18n="f2_t">Полный спектр услуг</h3><p data-i18n="f2_p">Волосы, ногти, ресницы, брови и уход за кожей — всё в одном месте.</p></div>
+      <div class="feat reveal"><div class="ico"><svg><use href="#i-shield"/></svg></div><h3 data-i18n="f3_t">Чистота и безопасность</h3><p data-i18n="f3_p">Стерильные инструменты и качественные материалы.</p></div>
+      <div class="feat reveal"><div class="ico"><svg><use href="#i-heart"/></svg></div><h3 data-i18n="f4_t">Индивидуальный подход</h3><p data-i18n="f4_p">Подбираем образ именно под вас и ваши пожелания.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="svc_eyebrow">Наше меню</span>
+      <h2 data-i18n="svc_title">Услуги и цены</h2>
+      <div class="sep"></div>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+    <div class="extras">
+      <div class="extra reveal"><svg><use href="#i-card"/></svg><div><h4 data-i18n="ex2_t">Способы оплаты</h4><p data-i18n="ex2_p">Наличными, переводом с карты или по QR-коду.</p></div></div>
+      <div class="extra reveal"><svg><use href="#i-clock"/></svg><div><h4 data-i18n="ex3_t">Работаем без выходных</h4><p data-i18n="ex3_p">Ежедневно с 09:00 до 21:00.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="book_eyebrow">Онлайн-запись</span>
+      <h2 data-i18n="book_title">Записаться в салон</h2>
+      <div class="sep"></div>
+    </div>
+    <div class="booking-wrap">
+      <div class="how reveal">
+        <h3 data-i18n="how_title">Как будет работать запись?</h3>
+        <div class="step"><div class="n">1</div><div><h4 data-i18n="s1_t">Выберите услуги</h4><p data-i18n="s1_p">Отметьте одну или несколько услуг в форме.</p></div></div>
+        <div class="step"><div class="n">2</div><div><h4 data-i18n="s2_t">Укажите дату и время</h4><p data-i18n="s2_p">Выберите удобный день и время визита.</p></div></div>
+        <div class="step"><div class="n">3</div><div><h4 data-i18n="s3_t">Отправьте в WhatsApp</h4><p data-i18n="s3_p">Нажмите кнопку — откроется WhatsApp с готовым сообщением. Администратор подтвердит запись.</p></div></div>
+        <div class="calls">
+          <a href="https://wa.me/996704959495" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span data-i18n="via_wa">Через WhatsApp</span> · +996 704 95-94-95</a>
+          <a href="tel:+996312364968"><svg><use href="#i-phone"/></svg><span data-i18n="via_call">Звонок по телефону</span> · +996 (312) 36-49-68</a>
+          <a href="tel:+996704959495"><svg><use href="#i-phone"/></svg><span data-i18n="via_call">Звонок по телефону</span> · +996 704 95-94-95</a>
+        </div>
+      </div>
+
+      <form id="bookForm" class="reveal" novalidate>
+        <h3 data-i18n="form_title">Выберите услуги</h3>
+        <p class="sub" data-i18n="form_sub">Можно выбрать несколько услуг из разных категорий.</p>
+        <div class="tabs" id="tabs"></div>
+        <div class="chips" id="chips"></div>
+        <div class="selected" id="selected"></div>
+        <div class="row">
+          <div class="field"><label for="date" data-i18n="f_date">Дата</label><input type="date" id="date" required></div>
+          <div class="field"><label for="time" data-i18n="f_time">Время</label><select id="time" required></select></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="name" data-i18n="f_name">Ваше имя</label><input type="text" id="name" autocomplete="name" required></div>
+          <div class="field"><label for="phone" data-i18n="f_phone">Телефон (необязательно)</label><input type="tel" id="phone" autocomplete="tel" placeholder="+996 ..."></div>
+        </div>
+        <div class="field full"><label for="comment" data-i18n="f_comment">Комментарий (необязательно)</label><textarea id="comment"></textarea></div>
+        <div class="err" id="err" role="alert"></div>
+        <button type="submit" class="btn btn-gold"><svg><use href="#i-wa"/></svg><span data-i18n="f_send">Отправить в WhatsApp</span></button>
+        <div class="wa-note" data-i18n="f_note">Откроется WhatsApp с готовым сообщением</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="gal_eyebrow">Наши работы</span>
+      <h2 data-i18n="gal_title">Галерея</h2>
+      <div class="sep"></div>
+    </div>
+    <!-- Положите свои фото в папку photos/ с именами 1.jpg … 8.jpg -->
+    <div class="gal-grid" id="galGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section class="contacts" id="contacts">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" data-i18n="con_eyebrow">Как нас найти</span>
+      <h2 data-i18n="con_title">Контакты</h2>
+      <div class="sep"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="c-list reveal">
+        <div class="c-item"><svg><use href="#i-pin"/></svg><div><h4 data-i18n="c_addr">Адрес</h4><p data-i18n="c_addr_v">пр. Чуй, 113, 1 этаж, Свердловский район, Бишкек, 720065</p><p style="color:var(--muted);font-size:.84rem" data-i18n="c_landmark">Рядом: бизнес-центр «Восток» (150 м)</p></div></div>
+        <div class="c-item"><svg><use href="#i-phone"/></svg><div><h4 data-i18n="c_phone">Телефоны</h4><a href="tel:+996312364968">+996 (312) 36-49-68</a><a href="tel:+996704959495">+996 704 95-94-95</a></div></div>
+        <div class="c-item"><svg><use href="#i-clock"/></svg><div><h4 data-i18n="c_hours">Режим работы</h4><p data-i18n="hours_full">Пн — Вс: 09:00–21:00</p></div></div>
+      </div>
+      <div class="map reveal">
+        <iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=74.6305%2C42.8725%2C74.6385%2C42.8768&layer=mapnik&marker=42.874635%2C74.634568"></iframe>
+        <button type="button" class="map-hit" id="mapOpen" aria-label="Open map"></button>
+        <div class="map-badge"><svg><use href="#i-pin"/></svg><span data-i18n="map_open">Открыть на карте</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="f-logo gold-text">ЛЮКС</div>
+    <div class="f-hours"><span data-i18n="f_hours">Пн — Вс</span> · <b>09:00–21:00</b></div>
+    <div class="socials">
+      <!-- Замените # на ссылку вашего Instagram -->
+      <a href="https://www.instagram.com/indira_stilist_bishkek" id="igLink" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
+      <a href="https://wa.me/996704959495" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+      <a href="tel:+996312364968" aria-label="Phone"><svg><use href="#i-phone"/></svg></a>
+    </div>
+    <div class="copy">© <span id="year"></span> Люкс · <span data-i18n="rights">Все права защищены</span></div>
+  </div>
+</footer>
+
+<!-- Выбор карты -->
+<div class="modal" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapTitle" hidden>
+  <div class="modal-box">
+    <button type="button" class="modal-x" id="mapClose" aria-label="Close"><svg><use href="#i-x"/></svg></button>
+    <h3 id="mapTitle" data-i18n="map_choose">Выберите карту</h3>
+    <p data-i18n="map_sub">Салон «Люкс», пр. Чуй, 113</p>
+    <a class="map-opt" id="m2gis" target="_blank" rel="noopener" href="https://2gis.kg/bishkek/firm/70000001019366209?m=74.634568%2C42.874635%2F17.29"><svg><use href="#i-pin"/></svg><span>2GIS</span></a>
+    <a class="map-opt" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=42.874635,74.634568"><svg><use href="#i-pin"/></svg><span>Google Maps</span></a>
+    <a class="map-opt" target="_blank" rel="noopener" href="https://yandex.com/maps/?pt=74.634568,42.874635&z=17&l=map"><svg><use href="#i-pin"/></svg><span>Yandex Maps</span></a>
+    <a class="map-opt" target="_blank" rel="noopener" href="https://maps.apple.com/?ll=42.874635,74.634568&q=Lux"><svg><use href="#i-pin"/></svg><span>Apple Maps</span></a>
+  </div>
+</div>
+
+<a class="fab" href="https://wa.me/996704959495" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+/* ===== НАСТРОЙКИ ===== */
+const WA_NUMBER = "996704959495";            // номер WhatsApp салона
+const OPEN_H = 9, CLOSE_H = 21;              // часы работы
+
+/* ===== ПЕРЕВОДЫ ===== */
+const I18N = {
+ru:{
+ logoSub:"САЛОН КРАСОТЫ",nav_about:"О салоне",nav_services:"Услуги",nav_booking:"Запись",nav_gallery:"Галерея",nav_contacts:"Контакты",
+ hero_eyebrow:"Салон красоты · Бишкек",hero_title:"Красота без компромиссов",
+ hero_lead:"Парикмахерские услуги, маникюр и педикюр, ресницы и брови, косметология — всё для вашего безупречного образа в одном месте.",
+ hero_cta:"Записаться",hero_call:"Позвонить",hours_short:"Пн — Вс · 09:00–21:00",addr_short:"пр. Чуй, 113",
+ open:"Сейчас открыто",closed:"Сейчас закрыто · откроется в 09:00",
+ about_eyebrow:"Почему мы",about_title:"Роскошь в каждой детали",about_text:"В салоне «Люкс» мы заботимся о каждом госте: опытные мастера, современные техники и приятная атмосфера.",
+ f1_t:"Опытные мастера",f1_p:"Профессионалы с многолетним опытом и безупречным вкусом.",
+ f2_t:"Полный спектр услуг",f2_p:"Волосы, ногти, ресницы, брови и уход за кожей — всё в одном месте.",
+ f3_t:"Чистота и безопасность",f3_p:"Стерильные инструменты и качественные материалы.",
+ f4_t:"Индивидуальный подход",f4_p:"Подбираем образ именно под вас и ваши пожелания.",
+ svc_eyebrow:"Наше меню",svc_title:"Услуги и цены",
+ cat_hair:"Парикмахерские услуги",cat_nails:"Ногтевая студия",cat_lash:"Ресницы и брови",cat_cosmo:"Косметология",
+ from:"от",som:"сом",ask:"уточняйте",
+ ex1_t:"Выезд на дом",ex1_p:"Мастер приедет к вам — уточняйте у администратора.",
+ ex2_t:"Способы оплаты",ex2_p:"Наличными, переводом с карты или по QR-коду.",
+ ex3_t:"Работаем без выходных",ex3_p:"Ежедневно с 09:00 до 21:00.",
+ book_eyebrow:"Онлайн-запись",book_title:"Записаться в салон",how_title:"Как будет работать запись?",
+ s1_t:"Выберите услуги",s1_p:"Отметьте одну или несколько услуг в форме.",
+ s2_t:"Укажите дату и время",s2_p:"Выберите удобный день и время визита.",
+ s3_t:"Отправьте в WhatsApp",s3_p:"Нажмите кнопку — откроется WhatsApp с готовым сообщением. Администратор подтвердит запись.",
+ via_wa:"Через WhatsApp",via_call:"Звонок по телефону",
+ form_title:"Выберите услуги",form_sub:"Можно выбрать несколько услуг из разных категорий.",
+ f_date:"Дата",f_time:"Время",f_name:"Ваше имя",f_phone:"Телефон (необязательно)",f_comment:"Комментарий (необязательно)",
+ f_send:"Отправить в WhatsApp",f_note:"Откроется WhatsApp с готовым сообщением",
+ sel_label:"Выбрано",pick_time:"Выберите время",
+ e_svc:"Выберите хотя бы одну услугу.",e_date:"Выберите дату.",e_time:"Выберите время.",e_name:"Введите ваше имя.",
+ wa_hello:"Здравствуйте!",wa_intro:"Хочу записаться в салон «Люкс».",wa_services:"Услуги",wa_date:"Дата",wa_time:"Время",wa_name:"Имя",wa_phone:"Телефон",wa_comment:"Комментарий",wa_thanks:"Спасибо!",
+ gal_eyebrow:"Наши работы",gal_title:"Галерея",photo:"Ваше фото",
+ con_eyebrow:"Как нас найти",con_title:"Контакты",c_addr:"Адрес",c_addr_v:"пр. Чуй, 113, 1 этаж, Свердловский район, Бишкек, 720065",c_landmark:"Рядом: бизнес-центр «Восток» (150 м)",
+ c_phone:"Телефоны",c_hours:"Режим работы",hours_full:"Пн — Вс: 09:00–21:00",f_hours:"Пн — Вс",rights:"Все права защищены",
+ map_open:"Открыть на карте",map_choose:"Выберите карту",map_sub:"Салон «Люкс», пр. Чуй, 113"},
+ky:{
+ logoSub:"ӨРӨМ САЛОНУ",nav_about:"Салон жөнүндө",nav_services:"Кызматтар",nav_booking:"Жазылуу",nav_gallery:"Галерея",nav_contacts:"Байланыш",
+ hero_eyebrow:"Сулуулук салону · Бишкек",hero_title:"Компромиссиз сулуулук",
+ hero_lead:"Чач тарач кызматтары, маникюр жана педикюр, кирпик жана каш, косметология — кемчиликсиз образыңыз үчүн баары бир жерде.",
+ hero_cta:"Жазылуу",hero_call:"Чалуу",hours_short:"Дш — Жк · 09:00–21:00",addr_short:"Чүй пр., 113",
+ open:"Азыр ачык",closed:"Азыр жабык · саат 09:00до ачылат",
+ about_eyebrow:"Эмне үчүн биз",about_title:"Ар бир деталда люкс",about_text:"«Люкс» салонунда ар бир коноктун камын көрөбүз: тажрыйбалуу чеберлер, заманбап ыкмалар жана жагымдуу атмосфера.",
+ f1_t:"Тажрыйбалуу чеберлер",f1_p:"Көп жылдык тажрыйбасы жана мыкты табити бар адистер.",
+ f2_t:"Кызматтардын толук топтому",f2_p:"Чач, тырмак, кирпик, каш жана тери камкордугу — баары бир жерде.",
+ f3_t:"Тазалык жана коопсуздук",f3_p:"Стерилдүү шаймандар жана сапаттуу материалдар.",
+ f4_t:"Жеке мамиле",f4_p:"Сизге жана каалоолоруңузга жараша образ тандайбыз.",
+ svc_eyebrow:"Биздин меню",svc_title:"Кызматтар жана баалар",
+ cat_hair:"Чач тарач кызматтары",cat_nails:"Тырмак студиясы",cat_lash:"Кирпик жана каш",cat_cosmo:"Косметология",
+ from:"баасы",som:"сомдон",ask:"сураңыз",
+ ex1_t:"Үйгө чыгуу",ex1_p:"Чебер сизге барат — администратордан сураңыз.",
+ ex2_t:"Төлөө жолдору",ex2_p:"Накталай, картадан которуу же QR-код аркылуу.",
+ ex3_t:"Дем алышсыз иштейбиз",ex3_p:"Күн сайын 09:00дөн 21:00гө чейин.",
+ book_eyebrow:"Онлайн жазылуу",book_title:"Салонго жазылуу",how_title:"Жазылуу кантип иштейт?",
+ s1_t:"Кызматтарды тандаңыз",s1_p:"Формадан бир же бир нече кызматты белгилеңиз.",
+ s2_t:"Күн жана убакытты көрсөтүңүз",s2_p:"Ыңгайлуу күн жана убакытты тандаңыз.",
+ s3_t:"WhatsApp'ка жөнөтүңүз",s3_p:"Баскычты басыңыз — WhatsApp даяр билдирүү менен ачылат. Администратор жазылууну ырастайт.",
+ via_wa:"WhatsApp аркылуу",via_call:"Телефон аркылуу чалуу",
+ form_title:"Кызматтарды тандаңыз",form_sub:"Ар кандай категориялардан бир нече кызмат тандасаңыз болот.",
+ f_date:"Күнү",f_time:"Убактысы",f_name:"Сиздин атыңыз",f_phone:"Телефон (милдеттүү эмес)",f_comment:"Комментарий (милдеттүү эмес)",
+ f_send:"WhatsApp'ка жөнөтүү",f_note:"WhatsApp даяр билдирүү менен ачылат",
+ sel_label:"Тандалды",pick_time:"Убакытты тандаңыз",
+ e_svc:"Кеминде бир кызмат тандаңыз.",e_date:"Күндү тандаңыз.",e_time:"Убакытты тандаңыз.",e_name:"Атыңызды жазыңыз.",
+ wa_hello:"Саламатсызбы!",wa_intro:"«Люкс» салонуна жазылгым келет.",wa_services:"Кызматтар",wa_date:"Күнү",wa_time:"Убактысы",wa_name:"Аты",wa_phone:"Телефон",wa_comment:"Комментарий",wa_thanks:"Рахмат!",
+ gal_eyebrow:"Биздин иштер",gal_title:"Галерея",photo:"Сиздин сүрөт",
+ con_eyebrow:"Бизди кантип табасыз",con_title:"Байланыш",c_addr:"Дарек",c_addr_v:"Чүй пр., 113, 1-кабат, Свердловск району, Бишкек, 720065",c_landmark:"Жанында: «Восток» бизнес-борбору (150 м)",
+ c_phone:"Телефондор",c_hours:"Иш графиги",hours_full:"Дш — Жк: 09:00–21:00",f_hours:"Дш — Жк",rights:"Бардык укуктар корголгон",
+ map_open:"Картадан ачуу",map_choose:"Картаны тандаңыз",map_sub:"«Люкс» салону, Чүй пр., 113"},
+en:{
+ logoSub:"BEAUTY SALON",nav_about:"About",nav_services:"Services",nav_booking:"Booking",nav_gallery:"Gallery",nav_contacts:"Contacts",
+ hero_eyebrow:"Beauty salon · Bishkek",hero_title:"Beauty without compromise",
+ hero_lead:"Hair, manicure and pedicure, lashes and brows, cosmetology — everything for your flawless look in one place.",
+ hero_cta:"Book now",hero_call:"Call us",hours_short:"Mon — Sun · 09:00–21:00",addr_short:"113 Chuy Ave",
+ open:"Open now",closed:"Closed now · opens at 09:00",
+ about_eyebrow:"Why us",about_title:"Luxury in every detail",about_text:"At Lux salon we care for every guest: experienced masters, modern techniques and a pleasant atmosphere.",
+ f1_t:"Experienced masters",f1_p:"Professionals with years of experience and impeccable taste.",
+ f2_t:"Full range of services",f2_p:"Hair, nails, lashes, brows and skincare — all in one place.",
+ f3_t:"Clean & safe",f3_p:"Sterile tools and quality materials.",
+ f4_t:"Personal approach",f4_p:"We create a look tailored to you and your wishes.",
+ svc_eyebrow:"Our menu",svc_title:"Services & prices",
+ cat_hair:"Hairdressing",cat_nails:"Nail studio",cat_lash:"Lashes & brows",cat_cosmo:"Cosmetology",
+ from:"from",som:"KGS",ask:"ask us",
+ ex1_t:"Home visits",ex1_p:"Our master comes to you — ask the administrator.",
+ ex2_t:"Payment methods",ex2_p:"Cash, card transfer or QR code.",
+ ex3_t:"Open every day",ex3_p:"Daily from 09:00 to 21:00.",
+ book_eyebrow:"Online booking",book_title:"Book an appointment",how_title:"How does booking work?",
+ s1_t:"Choose services",s1_p:"Select one or several services in the form.",
+ s2_t:"Pick date and time",s2_p:"Choose a convenient day and time for your visit.",
+ s3_t:"Send via WhatsApp",s3_p:"Press the button — WhatsApp opens with a ready message. The administrator will confirm your booking.",
+ via_wa:"Via WhatsApp",via_call:"Phone call",
+ form_title:"Choose services",form_sub:"You can select several services from different categories.",
+ f_date:"Date",f_time:"Time",f_name:"Your name",f_phone:"Phone (optional)",f_comment:"Comment (optional)",
+ f_send:"Send to WhatsApp",f_note:"WhatsApp will open with a ready message",
+ sel_label:"Selected",pick_time:"Select time",
+ e_svc:"Please select at least one service.",e_date:"Please choose a date.",e_time:"Please choose a time.",e_name:"Please enter your name.",
+ wa_hello:"Hello!",wa_intro:"I would like to book an appointment at Lux salon.",wa_services:"Services",wa_date:"Date",wa_time:"Time",wa_name:"Name",wa_phone:"Phone",wa_comment:"Comment",wa_thanks:"Thank you!",
+ gal_eyebrow:"Our work",gal_title:"Gallery",photo:"Your photo",
+ con_eyebrow:"Find us",con_title:"Contacts",c_addr:"Address",c_addr_v:"113 Chuy Ave, 1st floor, Sverdlovsky district, Bishkek, 720065",c_landmark:"Nearby: Vostok business center (150 m)",
+ c_phone:"Phones",c_hours:"Opening hours",hours_full:"Mon — Sun: 09:00–21:00",f_hours:"Mon — Sun",rights:"All rights reserved",
+ map_open:"Open on map",map_choose:"Choose a map app",map_sub:"Lux salon, 113 Chuy Ave"}
+};
+
+/* ===== УСЛУГИ =====  price: число (от ... сом) или null (уточняйте) */
+const CATS = [
+ {id:"hair",icon:"i-scissors",items:[
+  {ru:"Женская стрижка",ky:"Аялдардын чач кыркуусу",en:"Women's haircut",price:500},
+  {ru:"Мужская стрижка",ky:"Эркектердин чач кыркуусу",en:"Men's haircut",price:400},
+  {ru:"Детская стрижка",ky:"Балдардын чач кыркуусу",en:"Kids' haircut"},
+  {ru:"Стрижка бороды",ky:"Сакал кыркуу",en:"Beard trim"},
+  {ru:"Женская химзавивка",ky:"Аялдардын химиялык буралмасы",en:"Women's perm"},
+  {ru:"Плетение кос",ky:"Чач өрүү",en:"Braiding"},
+  {ru:"Сложное окрашивание",ky:"Татаал боёо",en:"Complex coloring"},
+  {ru:"Свадебные и вечерние причёски",ky:"Той жана кечки чач жасалгалары",en:"Wedding & evening hairstyles"}]},
+ {id:"nails",icon:"i-nail",items:[
+  {ru:"Женский педикюр",ky:"Аялдардын педикюру",en:"Women's pedicure"},
+  {ru:"Наращивание гелем",ky:"Гель менен узартуу",en:"Gel extensions"},
+  {ru:"Наращивание акрилом",ky:"Акрил менен узартуу",en:"Acrylic extensions"},
+  {ru:"Мужской маникюр",ky:"Эркектердин маникюру",en:"Men's manicure"},
+  {ru:"Гель-лак",ky:"Гель-лак",en:"Gel polish"},
+  {ru:"Аппаратный маникюр",ky:"Аппараттык маникюр",en:"Hardware manicure"},
+  {ru:"Мужской педикюр",ky:"Эркектердин педикюру",en:"Men's pedicure"}]},
+ {id:"lash",icon:"i-eye",items:[
+  {ru:"Наращивание ресниц",ky:"Кирпикти узартуу",en:"Lash extensions"},
+  {ru:"Ламинирование ресниц",ky:"Кирпикти ламинациялоо",en:"Lash lamination"},
+  {ru:"Окрашивание ресниц",ky:"Кирпикти боёо",en:"Lash tinting"},
+  {ru:"Коррекция бровей",ky:"Каштарды оңдоо",en:"Brow shaping"},
+  {ru:"Окрашивание бровей",ky:"Каштарды боёо",en:"Brow tinting"},
+  {ru:"Ламинирование бровей",ky:"Каштарды ламинациялоо",en:"Brow lamination"}]},
+ {id:"cosmo",icon:"i-sparkle",items:[
+  {ru:"Чистка лица",ky:"Бетти тазалоо",en:"Facial cleansing"},
+  {ru:"Пилинги",ky:"Пилингдер",en:"Peelings"},
+  {ru:"Удаление перманента",ky:"Перманентти өчүрүү",en:"Permanent makeup removal"}]}
+];
+
+/* ===== СОСТОЯНИЕ ===== */
+let lang = "ru";
+try{ lang = localStorage.getItem("lux_lang") || "ru"; }catch(e){}
+if(!I18N[lang]) lang="ru";
+let activeCat = "hair";
+const selected = new Set();   // "catId:index"
+
+const $ = s=>document.querySelector(s);
+const t = k => (I18N[lang][k] ?? I18N.ru[k] ?? k);
+const priceText = it => it.price ? `${t("from")} ${it.price} ${t("som")}` : t("ask");
+
+/* ===== РЕНДЕР ===== */
+function renderServices(){
+  $("#svcGrid").innerHTML = CATS.map(c=>`
+    <div class="svc-card reveal in">
+      <h3><svg><use href="#${c.icon}"/></svg>${t("cat_"+c.id)}</h3>
+      <ul class="svc-list">${c.items.map(it=>`
+        <li><span>${it[lang]}</span><span class="dots"></span><span class="price ${it.price?"":"ask"}">${priceText(it)}</span></li>`).join("")}
+      </ul>
+    </div>`).join("");
+}
+function renderTabs(){
+  $("#tabs").innerHTML = CATS.map(c=>`<button type="button" class="tab ${c.id===activeCat?"active":""}" data-cat="${c.id}">${t("cat_"+c.id)}</button>`).join("");
+}
+function renderChips(){
+  const c = CATS.find(x=>x.id===activeCat);
+  $("#chips").innerHTML = c.items.map((it,i)=>{
+    const key = c.id+":"+i;
+    return `<div class="chip ${selected.has(key)?"sel":""}" role="checkbox" tabindex="0" aria-checked="${selected.has(key)}" data-key="${key}">
+      <span class="box"><svg><use href="#i-check"/></svg></span><span>${it[lang]}</span></div>`;
+  }).join("");
+}
+function selectedNames(){
+  return [...selected].map(k=>{const [c,i]=k.split(":");return CATS.find(x=>x.id===c).items[i][lang];});
+}
+function renderSelected(){
+  const n = selectedNames();
+  $("#selected").innerHTML = n.length ? `<b>${t("sel_label")} (${n.length}):</b> ${n.join(" · ")}` : "";
+}
+function renderTimes(){
+  const sel = $("#time"), cur = sel.value;
+  let html = `<option value="">${t("pick_time")}</option>`;
+  for(let h=OPEN_H;h<CLOSE_H;h++){
+    for(const m of ["00","30"]) html += `<option value="${String(h).padStart(2,"0")}:${m}">${String(h).padStart(2,"0")}:${m}</option>`;
+  }
+  sel.innerHTML = html; sel.value = cur;
+}
+function renderGallery(){
+  let h="";
+  for(let i=1;i<=8;i++){
+    h+=`<div class="gal-item reveal in"><div class="ph"><div><svg><use href="#i-image"/></svg>${t("photo")} ${i}</div></div>
+      <img src="photos/${i}.jpg" alt="Люкс ${i}" loading="lazy" onerror="this.remove()"></div>`;
+  }
+  $("#galGrid").innerHTML = h;
+}
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("#lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  renderServices(); renderTabs(); renderChips(); renderSelected(); renderTimes(); renderGallery(); updateStatus();
+  $("#err").textContent="";
+}
+
+/* ===== СТАТУС ОТКРЫТО/ЗАКРЫТО (время Бишкека) ===== */
+function updateStatus(){
+  const parts = new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Bishkek",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const h = +parts.find(p=>p.type==="hour").value;
+  const open = h>=OPEN_H && h<CLOSE_H;
+  const el = $("#status");
+  el.className = "status "+(open?"open":"closed");
+  $("#statusText").textContent = open ? t("open") : t("closed");
+}
+
+/* ===== СОБЫТИЯ ===== */
+$("#lang").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  lang=b.dataset.lang; try{localStorage.setItem("lux_lang",lang);}catch(err){}
+  applyLang();
+});
+$("#tabs").addEventListener("click",e=>{
+  const b=e.target.closest(".tab"); if(!b) return;
+  activeCat=b.dataset.cat; renderTabs(); renderChips();
+});
+function toggleChip(el){
+  const k=el.dataset.key;
+  selected.has(k)?selected.delete(k):selected.add(k);
+  renderChips(); renderSelected();
+  const again=document.querySelector(`.chip[data-key="${k}"]`); if(again) again.focus();
+}
+$("#chips").addEventListener("click",e=>{const c=e.target.closest(".chip"); if(c) toggleChip(c);});
+$("#chips").addEventListener("keydown",e=>{
+  if((e.key===" "||e.key==="Enter") && e.target.classList.contains("chip")){e.preventDefault();toggleChip(e.target);}
+});
+
+/* Дата: не раньше сегодня (по Бишкеку) */
+(function(){
+  const d = new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Bishkek"}).format(new Date());
+  $("#date").min = d;
+})();
+
+$("#bookForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const date=$("#date").value, time=$("#time").value, name=$("#name").value.trim(),
+        phone=$("#phone").value.trim(), comment=$("#comment").value.trim();
+  const err=$("#err");
+  if(!selected.size) return err.textContent=t("e_svc");
+  if(!date) return err.textContent=t("e_date");
+  if(!time) return err.textContent=t("e_time");
+  if(!name) return err.textContent=t("e_name");
+  err.textContent="";
+  const [y,m,d]=date.split("-");
+  let msg = `${t("wa_hello")} ${t("wa_intro")}\n\n`+
+    `${t("wa_services")}:\n${selectedNames().map(n=>"• "+n).join("\n")}\n\n`+
+    `${t("wa_date")}: ${d}.${m}.${y}\n${t("wa_time")}: ${time}\n${t("wa_name")}: ${name}`;
+  if(phone) msg += `\n${t("wa_phone")}: ${phone}`;
+  if(comment) msg += `\n${t("wa_comment")}: ${comment}`;
+  msg += `\n\n${t("wa_thanks")}`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+});
+
+/* Выбор карты */
+const mapModal=$("#mapModal");
+const closeMap=()=>{mapModal.hidden=true;};
+$("#mapOpen").onclick=()=>{mapModal.hidden=false;};
+$("#mapClose").onclick=closeMap;
+mapModal.addEventListener("click",e=>{if(e.target===mapModal||e.target.closest(".map-opt")) closeMap();});
+addEventListener("keydown",e=>{if(e.key==="Escape") closeMap();});
+
+/* Меню (мобильное) */
+const nav=$("#nav");
+$("#burger").onclick=()=>nav.classList.add("open");
+$("#navClose").onclick=()=>nav.classList.remove("open");
+nav.addEventListener("click",e=>{if(e.target.tagName==="A") nav.classList.remove("open");});
+
+/* Шапка при прокрутке */
+const header=$("#header");
+const onScroll=()=>header.classList.toggle("scrolled",scrollY>40);
+addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+/* Появление блоков */
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}}),{threshold:.12});
+document.querySelectorAll(".reveal:not(.in)").forEach(el=>io.observe(el));
+
+$("#year").textContent=new Date().getFullYear();
+applyLang();
+setInterval(updateStatus,60000);
+</script>
+</body>
+</html>
