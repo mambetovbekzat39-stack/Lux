@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Люкс — Салон красоты, Бишкек</title>
 <meta name="description" content="Салон красоты «Люкс» в Бишкеке: парикмахерские услуги, маникюр, педикюр, ресницы, брови, косметология. Ежедневно 09:00–21:00.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<meta property="og:image" content="logo.png">
+<meta property="og:title" content="Люкс — Салон красоты, Бишкек">
+<meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -176,6 +181,12 @@ form .btn{width:100%;padding:17px}
 .map-opt svg{color:var(--gold);font-size:1.3rem}
 .map-opt:hover{border-color:var(--gold);color:var(--gold2);background:rgba(212,175,55,.07)}
 
+/* Logo image */
+.logo-img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--gold);background:#fff}
+.hero-logo{width:130px;height:130px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin-bottom:22px;box-shadow:0 10px 40px rgba(212,175,55,.25);background:#fff}
+.f-logo-img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:2px solid var(--gold);background:#fff}
+@media(max-width:640px){.hero-logo{width:96px;height:96px}.logo-img{width:40px;height:40px}}
+
 /* Footer */
 footer{padding:60px 0 30px;border-top:1px solid var(--line);background:#070707;text-align:center}
 .f-logo{font-family:'Cormorant Garamond',serif;font-size:2.4rem;letter-spacing:.3em;font-weight:700;margin-bottom:6px}
@@ -258,7 +269,8 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:#070707;t
 <header id="header">
   <div class="container nav">
     <a href="#home" class="logo" aria-label="Люкс">
-      <div class="logo-mark"><span>L</span></div>
+      <img class="logo-img" src="logo.png" alt="Люкс" width="48" height="48" onerror="var s=this.nextElementSibling;s.style.display='grid';this.remove()">
+      <div class="logo-mark" style="display:none"><span>L</span></div>
       <div class="logo-text">ЛЮКС<small data-i18n="logoSub">САЛОН КРАСОТЫ</small></div>
     </a>
     <nav id="nav">
@@ -287,6 +299,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:#070707;t
 <section class="hero" id="home">
   <div class="container">
     <div class="hero-inner">
+      <img class="hero-logo" src="logo.png" alt="Люкс — салон красоты" width="130" height="130" onerror="this.remove()">
       <div class="status" id="status"><i></i><span id="statusText"></span></div>
       <span class="eyebrow" data-i18n="hero_eyebrow">Салон красоты · Бишкек</span>
       <h1><span class="gold-text">Люкс</span><br><span data-i18n="hero_title">Красота без компромиссов</span></h1>
@@ -420,6 +433,7 @@ footer{padding:60px 0 30px;border-top:1px solid var(--line);background:#070707;t
 
 <footer>
   <div class="container">
+    <img class="f-logo-img" src="logo.png" alt="Люкс" width="120" height="120" loading="lazy" onerror="this.remove()">
     <div class="f-logo gold-text">ЛЮКС</div>
     <div class="f-hours"><span data-i18n="f_hours">Пн — Вс</span> · <b>09:00–21:00</b></div>
     <div class="socials">
