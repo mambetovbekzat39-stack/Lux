@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kyro</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; manifest-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#08090a" />
+  <meta name="description" content="Kyro — habits, goals, rewards." />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Kyro" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ================= ONBOARDING ================= -->
+<div class="onboarding" id="onboarding">
+  <div class="onboarding-header">
+    <div class="onboarding-header-logo" id="onboarding-logo">Kyro</div>
+    <button class="lang-pill" id="ob-lang-btn" type="button" aria-haspopup="dialog"><span aria-hidden="true">🌐</span><span id="ob-lang-label"></span><span class="chev" aria-hidden="true">▾</span></button>
+  </div>
+
+  <!-- 0: Install -->
+  <div class="onboarding-screen active" data-screen="0">
+    <div class="onboarding-content">
+      <div class="install-icon">📲</div>
+      <div class="onboarding-title" data-i18n="inst_title">Установите Kyro</div>
+      <div class="onboarding-desc" data-i18n="inst_desc"></div>
+      <div class="install-instructions" id="install-instructions"></div>
+      <button class="onboarding-btn" id="onboarding-next-install">…</button>
+      <button class="onboarding-btn secondary" id="onboarding-skip-install" style="margin-top:12px;" data-i18n="inst_browser"></button>
+    </div>
+  </div>
+
+  <!-- 1: Quote -->
+  <div class="onboarding-screen" data-screen="1">
+    <div class="onboarding-quote" id="onboarding-quote">
+      <div class="onboarding-quote-text" data-i18n="quote_text"></div>
+      <div class="onboarding-quote-author" data-i18n="quote_author"></div>
+    </div>
+    <div class="onboarding-quote-btn" id="quote-btn-wrapper">
+      <button class="onboarding-btn" id="onboarding-quote-start" data-i18n="start"></button>
+    </div>
+  </div>
+
+  <!-- 2: Reading -->
+  <div class="onboarding-screen" data-screen="2">
+    <div class="onboarding-content">
+      <div class="onboarding-label" data-i18n="recommend"></div>
+      <div class="onboarding-title" data-i18n="before"></div>
+      <div class="onboarding-desc" data-i18n="before_desc"></div>
+      <div class="onboarding-article">
+        <div class="onboarding-article-source" data-i18n="art_author"></div>
+        <div class="onboarding-article-title" data-i18n="art_title"></div>
+        <a href="https://x.com/thedankoe/status/2010751592346030461" target="_blank" rel="noopener noreferrer" class="onboarding-article-link" data-i18n="read_thread"></a>
+      </div>
+      <button class="onboarding-btn" id="onboarding-next-2" data-i18n="cont"></button>
+    </div>
+  </div>
+
+  <!-- 3: Anti-vision -->
+  <div class="onboarding-screen" data-screen="3">
+    <div class="onboarding-content">
+      <div class="onboarding-label" data-i18n="step1"></div>
+      <div class="onboarding-title" data-i18n="anti_v"></div>
+      <div class="onboarding-desc" data-i18n="anti_v_desc"></div>
+      <textarea class="onboarding-textarea anti" id="anti-vision-input" data-i18n-ph="anti_ph" maxlength="200"></textarea>
+      <div class="onboarding-word-count"><span id="anti-char-count">0</span> / 200</div>
+      <button class="onboarding-btn" id="onboarding-next-3" data-i18n="cont"></button>
+    </div>
+  </div>
+
+  <!-- 4: Vision -->
+  <div class="onboarding-screen" data-screen="4">
+    <div class="onboarding-content">
+      <div class="onboarding-label" data-i18n="step2"></div>
+      <div class="onboarding-title" data-i18n="vis"></div>
+      <div class="onboarding-desc" data-i18n="vis_desc"></div>
+      <textarea class="onboarding-textarea" id="vision-input" data-i18n-ph="vis_ph" maxlength="200"></textarea>
+      <div class="onboarding-word-count"><span id="vision-char-count">0</span> / 200</div>
+      <button class="onboarding-btn" id="onboarding-next-4" data-i18n="cont"></button>
+    </div>
+  </div>
+
+  <!-- 5: Reflection time -->
+  <div class="onboarding-screen" data-screen="5">
+    <div class="onboarding-content">
+      <div class="onboarding-label" data-i18n="step3"></div>
+      <div class="onboarding-title" data-i18n="refl_title"></div>
+      <div class="onboarding-desc" data-i18n="refl_desc"></div>
+      <div class="onboarding-time-picker">
+        <input type="time" id="reflection-time-input" value="08:00" />
+      </div>
+      <p class="small" style="margin:12px 0 24px;color:var(--text-dim);text-align:center;" data-i18n="later_hint"></p>
+      <button class="onboarding-btn" id="onboarding-next-5" data-i18n="cont"></button>
+    </div>
+  </div>
+
+  <!-- 6: How it works -->
+  <div class="onboarding-screen" data-screen="6">
+    <div class="onboarding-content">
+      <div class="onboarding-label" data-i18n="how"></div>
+      <div class="onboarding-title" data-i18n="simple"></div>
+      <div class="onboarding-flow">
+        <div class="flow-row">
+          <div class="flow-item earn"><div class="flow-icon">✓</div><div class="flow-label" data-i18n="f_tasks"></div></div>
+          <div class="flow-plus">+</div>
+          <div class="flow-item earn"><div class="flow-icon">⚑</div><div class="flow-label" data-i18n="f_goals"></div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item points"><div class="flow-icon">+</div><div class="flow-label" data-i18n="f_points"></div></div>
+        </div>
+        <div class="flow-row">
+          <div class="flow-item slip"><div class="flow-icon">✗</div><div class="flow-label" data-i18n="f_slip"></div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item debt"><div class="flow-icon">−</div><div class="flow-label" data-i18n="f_debt"></div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-item atone"><div class="flow-icon">↺</div><div class="flow-label" data-i18n="f_atone"></div></div>
+        </div>
+        <div class="flow-row final">
+          <div class="flow-item reward"><div class="flow-icon">★</div><div class="flow-label" data-i18n="f_rewards"></div></div>
+        </div>
+      </div>
+      <button class="onboarding-btn" id="onboarding-start" data-i18n="enter"></button>
+    </div>
+  </div>
+
+  <div class="onboarding-foot" id="onboarding-foot">
+    <button class="foot-btn hidden-btn" id="onboarding-back" type="button"><span class="arr" aria-hidden="true">←</span><span data-i18n="ob_back"></span></button>
+    <div class="onboarding-progress" id="onboarding-progress"></div>
+    <button class="foot-btn skip" id="onboarding-skip" type="button"><span data-i18n="skip"></span><span class="arr" aria-hidden="true">→</span></button>
+  </div>
+</div>
+
+<!-- ================= REFLECTION ================= -->
+<div class="reflection-modal" id="reflection-modal" role="dialog" aria-modal="true">
+  <div class="reflection-content">
+    <div class="reflection-label" data-i18n="refl_title"></div>
+    <div class="reflection-question" id="reflection-question"></div>
+    <div class="reflection-actions">
+      <button class="onboarding-btn secondary" id="reflection-skip" data-i18n="refl_later"></button>
+      <button class="onboarding-btn" id="reflection-done" data-i18n="refl_done"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= PIN LOCK ================= -->
+<div class="pin-lock" id="pin-lock" role="dialog" aria-modal="true">
+  <div class="pin-lock-title">Kyro</div>
+  <div class="pin-lock-msg" id="pin-msg"></div>
+  <div class="pin-dots" id="pin-dots">
+    <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+  </div>
+  <div class="pin-pad" id="pin-pad">
+    <button class="pin-btn" type="button">1</button><button class="pin-btn" type="button">2</button><button class="pin-btn" type="button">3</button>
+    <button class="pin-btn" type="button">4</button><button class="pin-btn" type="button">5</button><button class="pin-btn" type="button">6</button>
+    <button class="pin-btn" type="button">7</button><button class="pin-btn" type="button">8</button><button class="pin-btn" type="button">9</button>
+    <button class="pin-btn empty" type="button" tabindex="-1" aria-hidden="true"></button><button class="pin-btn" type="button">0</button><button class="pin-btn back" type="button" aria-label="Backspace">←</button>
+  </div>
+  <div class="pin-links">
+    <button class="link-btn" id="pin-forgot" type="button"></button>
+    <button class="link-btn" id="pin-cancel" type="button" style="display:none"></button>
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
+<div class="app-shell" id="app-shell" style="display:none">
+  <div class="inner">
+    <div class="install-banner hidden" id="install-banner">
+      <div class="install-banner-text"><span class="icon">⊕</span><span id="install-banner-label"></span></div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <button class="install-banner-btn" id="install-banner-btn" type="button"></button>
+        <button class="install-banner-close" id="install-banner-close" type="button" aria-label="Close">✕</button>
+      </div>
+    </div>
+
+    <header class="top-header">
+      <div class="app-title"><span>Kyro</span></div>
+      <div class="header-right">
+        <button class="settings-btn hbtn" id="lock-btn" type="button"><span class="hi" aria-hidden="true">🔒</span><span class="hl" data-i18n="hdr_lock"></span></button>
+        <button class="settings-btn hbtn" id="settings-btn" type="button"><span class="hi" aria-hidden="true">☰</span><span class="hl" data-i18n="hdr_menu"></span></button>
+      </div>
+    </header>
+
+    <nav class="nav-tabs" id="nav-tabs">
+      <button class="nav-tab active" data-tab="tasks" type="button"><span class="icon" style="color:var(--emerald)">✓</span><span data-i18n="tab_tasks"></span></button>
+      <button class="nav-tab" data-tab="goals" type="button"><span class="icon" style="color:var(--emerald)">⚑</span><span data-i18n="tab_goals"></span></button>
+      <button class="nav-tab" data-tab="anti" type="button"><span class="icon" style="color:var(--crimson)">⚔</span><span data-i18n="tab_fight"></span></button>
+      <button class="nav-tab" data-tab="analytics" type="button"><span class="icon">↗</span><span data-i18n="tab_prog"></span></button>
+      <button class="nav-tab" data-tab="month" type="button"><span class="icon">🌸</span><span data-i18n="tab_month"></span></button>
+      <button class="nav-tab" data-tab="redeem" type="button"><span class="icon" style="color:var(--gold)">★</span><span data-i18n="tab_rew"></span></button>
+    </nav>
+    <div class="hint" id="tab-hint" hidden></div>
+
+    <section id="tab-tasks"></section>
+    <section id="tab-goals" style="display:none;"></section>
+    <section id="tab-anti" style="display:none;"></section>
+    <section id="tab-analytics" style="display:none;"></section>
+    <section id="tab-month" style="display:none;"></section>
+    <section id="tab-redeem" style="display:none;"></section>
+  </div>
+  <button class="fab" id="fab" type="button"><span class="fab-plus" aria-hidden="true">+</span><span id="fab-label"></span></button>
+</div>
+
+<!-- Settings -->
+<div class="modal-overlay" id="settings-modal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div class="modal-title" data-i18n="settings"></div>
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div id="settings-content"></div>
+  </div>
+</div>
+
+<!-- Install instructions -->
+<div class="modal-overlay" id="install-modal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div class="modal-title" data-i18n="inst_modal_title"></div>
+      <button class="modal-close" id="install-modal-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="install-instructions" id="install-modal-instructions" style="margin:0;"></div>
+  </div>
+</div>
+
+<!-- Quick add -->
+<div class="modal-overlay" id="quick-modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="quick-title">
+    <div class="modal-header">
+      <div class="modal-title" id="quick-title"></div>
+      <button class="modal-close" id="quick-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div id="quick-body"></div>
+  </div>
+</div>
+
+<!-- Language picker -->
+<div class="modal-overlay top-layer" id="lang-modal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div class="modal-title" data-i18n="language"></div>
+      <button class="modal-close" id="lang-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="lang-list" id="lang-list"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "packageId": "app.vercel.hackathon1_kyro.twa",
+  "host": "hackathon1-kyro.vercel.app",
+  "name": "Kyro",
+  "launcherName": "Kyro",
+  "display": "standalone",
+  "themeColor": "#0a0a0a",
+  "navigationColor": "#0a0a0a",
+  "backgroundColor": "#0a0a0a",
+  "startUrl": "/",
+  "iconUrl": "https://hackathon1-kyro.vercel.app/icons/icon-512.png",
+  "maskableIconUrl": "https://hackathon1-kyro.vercel.app/icons/maskable-512.png",
+  "webManifestUrl": "https://hackathon1-kyro.vercel.app/manifest.json",
+  "appVersion": "1.0.0",
+  "appVersionCode": 1,
+  "enableNotifications": false,
+  "fallbackType": "customtabs",
+  "orientation": "default",
+  "signingKey": {
+    "path": "./kyro-release.keystore",
+    "alias": "kyro"
+  }
+}
